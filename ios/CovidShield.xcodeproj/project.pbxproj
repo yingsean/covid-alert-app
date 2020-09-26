@@ -20,6 +20,8 @@
 		9DCF98527548A48AED34959C /* libPods-CovidShield-CovidShieldTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 77A1C8C77A874BCC9042935F /* libPods-CovidShield-CovidShieldTests.a */; };
 		A10A691626414D8AABBB659C /* Device-Large.png in Resources */ = {isa = PBXBuildFile; fileRef = 431D5AB0AA364B5C9E7BFF1D /* Device-Large.png */; };
 		BA054BD27C1A8657F6BF95BB /* libPods-CovidShield.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52445CBEB4F2B88669022976 /* libPods-CovidShield.a */; };
+		BA770F2F251530AA001E1E97 /* main.jsbundle in Resources */ = {isa = PBXBuildFile; fileRef = 008F07F21AC5B25A0029DE68 /* main.jsbundle */; };
+		BA770F3225153604001E1E97 /* assets in Resources */ = {isa = PBXBuildFile; fileRef = BA770F3125153604001E1E97 /* assets */; };
 		E0C908AD8D97409895BCF901 /* img_0.png in Resources */ = {isa = PBXBuildFile; fileRef = 94B4DC3E27534960AEAA5640 /* img_0.png */; };
 		E1EAAA13E1C84385A63D42EA /* NotoSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E93E71E0D77549B3926CABCB /* NotoSans-Regular.ttf */; };
 /* End PBXBuildFile section */
@@ -64,6 +66,7 @@
 		74B6941D245F15B20077B9DA /* ExposureNotification.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ExposureNotification.m; path = CovidShield/ExposureNotification.m; sourceTree = "<group>"; };
 		77A1C8C77A874BCC9042935F /* libPods-CovidShield-CovidShieldTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CovidShield-CovidShieldTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		94B4DC3E27534960AEAA5640 /* img_0.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = img_0.png; path = ../src/assets/animation/images/img_0.png; sourceTree = "<group>"; };
+		BA770F3125153604001E1E97 /* assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = assets; sourceTree = "<group>"; };
 		DB9A1444C934C41C93EB531F /* Pods-CovidShield.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CovidShield.debug.xcconfig"; path = "Target Support Files/Pods-CovidShield/Pods-CovidShield.debug.xcconfig"; sourceTree = "<group>"; };
 		E93E71E0D77549B3926CABCB /* NotoSans-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "NotoSans-Regular.ttf"; path = "../src/assets/fonts/NotoSans-Regular.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
@@ -173,6 +176,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				BA770F3125153604001E1E97 /* assets */,
 				13B07FAE1A68108700A75B9A /* CovidShield */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* CovidShieldTests */,
@@ -291,6 +295,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA770F3225153604001E1E97 /* assets in Resources */,
+				BA770F2F251530AA001E1E97 /* main.jsbundle in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				4A5C897C24B63BE00074FF89 /* InfoPlist.strings in Resources */,
 				195904142488B84300430369 /* Launch Screen.storyboard in Resources */,
@@ -317,7 +323,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
+			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh\n";
 		};
 		2CF09B024003DB90CDBA2FC5 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -586,9 +592,9 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "$(APP_ID_IOS)";
+				PRODUCT_BUNDLE_IDENTIFIER = ca.gc.hcsc.canada.covidalert.dev;
 				PRODUCT_NAME = CovidShield;
-				PROVISIONING_PROFILE_SPECIFIER = "Stop COVID App Store Profile";
+				PROVISIONING_PROFILE_SPECIFIER = "COVID Alert AdHoc DEV";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
