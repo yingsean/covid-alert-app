@@ -236,7 +236,8 @@ export class ExposureNotificationService {
       this.exposureStatusUpdatePromise = null;
       return input;
     };
-    this.exposureStatusUpdatePromise = this.performExposureStatusUpdate().then(cleanUpPromise, cleanUpPromise);
+    // this.exposureStatusUpdatePromise = this.performExposureStatusUpdate().then(cleanUpPromise, cleanUpPromise);
+    this.exposureStatusUpdatePromise = this.performExposureStatusUpdateV2().then(cleanUpPromise, cleanUpPromise);
     return this.exposureStatusUpdatePromise;
   }
 
@@ -367,11 +368,11 @@ export class ExposureNotificationService {
     attenuationDurationThresholds,
     minimumExposureDurationMinutes,
   }: {
-    exposureWindows: ExposureWindow[];
+    exposureWindows: ExposureWindow[] | undefined;
     attenuationDurationThresholds: number[];
     minimumExposureDurationMinutes: number;
   }): Promise<[boolean, ExposureSummary | undefined]> {
-    if (exposureWindows.length === 0) {
+    if (!exposureWindows || exposureWindows.length === 0) {
       return [false, undefined];
     }
     const dailySummariesObj: {[key: string]: {attenuationDurations: number[]; matchedKeyCount: number}} = {};
@@ -429,10 +430,18 @@ export class ExposureNotificationService {
       this.finalize();
     }
     const {keysFileUrls, lastCheckedPeriod} = await this.getKeysFileUrls();
+    console.log('keysFileUrls', keysFileUrls)
     try {
       captureMessage('lastCheckedPeriod', {lastCheckedPeriod});
-      await this.exposureNotification.provideDiagnosisKeys(keysFileUrls);
-      const exposureWindows = await this.exposureNotification.getExposureWindows();
+
+      // await this.exposureNotification.provideDiagnosisKeys(keysFileUrls);
+      // const exposureWindows = await this.exposureNotification.getExposureWindows();
+      console.log('hi')
+      const exposureWindows = await this.exposureNotification.getExposureWindowsCustom(
+        exposureConfiguration,
+        keysFileUrls,
+      );
+      console.log('exposureWindows', exposureWindows);
       const [isExposed, dailySummary] = await this.checkIfExposedV2({
         exposureWindows,
         attenuationDurationThresholds: exposureConfiguration.attenuationDurationThresholds,
